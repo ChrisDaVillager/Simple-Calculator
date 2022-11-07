@@ -1,15 +1,31 @@
 # imports
 import tkinter as tk
-from tkinter import *
-from tkinter.ttk import *
-from tkinter.constants import SUNKEN
 
-root = Tk()
+LIGHT_GRAY = '#F5F5F5'
 
-frame = tk.Frame(root, pady=25)
-frame.grid()
+class Calculator:
+    def __init__(self):
+        self.window = tk.Tk()
+        self.window.geometry('375x667')
+        self.window.resizable(0,0)
+        self.window.title('Calculator')
 
-tk.Label(frame, text='Hello! This will be a calculator').grid(column=0,row=0)
-tk.Button(frame, text='Leave', command=root.destroy).grid(column=1,row=0)
+        self.display_frame = self.create_display_frame()
+        self.buttons_frame = self.create_buttons_frame()
 
-root.mainloop()
+    def create_display_frame(self):
+        frame = tk.Frame(self.window, height=221, bg=LIGHT_GRAY)
+        frame.pack(expand=True, fill='both')
+        return frame
+    
+    def create_buttons_frame(self):
+        frame = tk.Frame(self.window)
+        frame.pack(expand=True, fill='both')
+        return frame
+
+    def run(self):
+        self.window.mainloop()
+
+if __name__ == '__main__':
+    calc = Calculator()
+    calc.run()

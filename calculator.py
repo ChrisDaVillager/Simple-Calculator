@@ -1,17 +1,20 @@
 # imports
 import tkinter as tk
 
+# font styles
 LARGE_FONT_STYLE = ('Arial', 40, 'bold')
 SMALL_FONT_STYLE = ('Arial', 16)
 DIGIT_FONT_STYLE = ('Arial', 24, 'bold')
 DEFAULT_FONT_STYLE = ('Arial', 20)
 
+# color styles HEX
 OFF_WHITE = '#F8FEFF'
 WHITE = '#FFFFFF'
 METALLIC = '#BCC6CC'
 VALENTINE = '#E55451'
 LABEL_COLOR = '#3D3C3A'
 
+# calc class
 class Calculator:
     def __init__(self):
         self.window = tk.Tk()
@@ -19,6 +22,7 @@ class Calculator:
         self.window.resizable(0,0)
         self.window.title('Calculator')
 
+        # top of calculator to display operations
         self.total_expression = '**'
         self.current_expression = '**'
         self.display_frame = self.create_display_frame()
@@ -26,6 +30,7 @@ class Calculator:
 
         self.total_label, self.label = self.create_display_labels()
 
+        # digits placements
         self.digits = {
             7:(1,1), 8:(1,2), 9:(1,3),
             4:(2,1), 5:(2,2), 6:(2,3),
@@ -33,6 +38,7 @@ class Calculator:
             0:(4,2), '.':(4,1)
         }
         
+        # digits/operators placements & symbols
         self.create_digit_buttons()
         self.operations = {'/': '\u00F7', '*': '\u00D7', '-': '-', '+': '+'}
         self.create_operator_buttons()

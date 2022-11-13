@@ -20,11 +20,11 @@ class Calculator:
         self.window = tk.Tk()
         self.window.geometry('375x667')
         self.window.resizable(0,0)
-        self.window.title('Calculator')
+        self.window.title('Calculator by Villager')
 
         # top of calculator to display operations
-        self.total_expression = '**'
-        self.current_expression = '**'
+        self.total_expression = ''
+        self.current_expression = ''
         self.display_frame = self.create_display_frame()
         self.buttons_frame = self.create_buttons_frame()
 
@@ -74,9 +74,13 @@ class Calculator:
         frame.pack(expand=True, fill='both')
         return frame
 
+    def add_to_expression(self, value):
+        self.current_expression += str(value)
+        self.update_label()
+
     def create_digit_buttons(self):
         for digit,grid_value in self.digits.items():
-            button = tk.Button(self.buttons_frame, text=str(digit), fg=WHITE, bg=LABEL_COLOR, font=DIGIT_FONT_STYLE, borderwidth=0)
+            button = tk.Button(self.buttons_frame, text=str(digit), fg=WHITE, bg=LABEL_COLOR, font=DIGIT_FONT_STYLE, borderwidth=0, command=lambda x=digit: self.add_to_expression(x))
             button.grid(row=grid_value[0], column=grid_value[1], sticky=tk.NSEW)
 
     def create_operator_buttons(self):
@@ -93,6 +97,12 @@ class Calculator:
     def create_equal_button(self):
         button = tk.Button(self.buttons_frame, text='=', bg=VALENTINE, fg=LABEL_COLOR, font=DEFAULT_FONT_STYLE, borderwidth=0)
         button.grid(row=4, column=3, columnspan=3, sticky=tk.NSEW)
+
+    def update_total_label(self):
+        self.total_label.config(text=self.total_expression)
+
+    def update_label(self):
+        self.label.config(text=self.current_expression)
 
     def run(self):
         self.window.mainloop()

@@ -4,4 +4,4 @@ Creating a simple calculator to perform basic calculations. Took inspiration fro
 
 Will continue to fine tune and make additions to demonstrate knowledge progression. 
  
-![image]('calc.png')
+![image](['calc.png'](https://github.com/ChrisDaVillager/Simple-Calculator/blob/main/calc.png?raw=true))
